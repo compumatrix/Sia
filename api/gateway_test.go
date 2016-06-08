@@ -27,16 +27,19 @@ func TestGatewayPeerAdd(t *testing.T) {
 	if testing.Short() {
 		t.SkipNow()
 	}
-	st, err := createServerTester("TestGatewayPeerAdd")
+	st, err := createServerTester("TestGatewayPeerAdd1")
 	if err != nil {
 		t.Fatal(err)
 	}
 	defer st.server.Close()
-	peer, err := gateway.New("localhost:0", build.TempDir("api", "TestGatewayPeerAdd", "gateway"))
+	peer, err := gateway.New("localhost:0", build.TempDir("api", "TestGatewayPeerAdd2", "gateway"))
 	if err != nil {
 		t.Fatal(err)
 	}
-	st.stdPostAPI("/gateway/add/"+string(peer.Address()), nil)
+	err = st.stdPostAPI("/gateway/add/"+string(peer.Address()), nil)
+	if err != nil {
+		t.Fatal(err)
+	}
 
 	var info GatewayInfo
 	st.getAPI("/gateway", &info)
@@ -49,12 +52,12 @@ func TestGatewayPeerRemove(t *testing.T) {
 	if testing.Short() {
 		t.SkipNow()
 	}
-	st, err := createServerTester("TestGatewayPeerRemove")
+	st, err := createServerTester("TestGatewayPeerRemove1")
 	if err != nil {
 		t.Fatal(err)
 	}
 	defer st.server.Close()
-	peer, err := gateway.New("localhost:0", build.TempDir("api", "TestGatewayPeerRemove", "gateway"))
+	peer, err := gateway.New("localhost:0", build.TempDir("api", "TestGatewayPeerRemove2", "gateway"))
 	if err != nil {
 		t.Fatal(err)
 	}
