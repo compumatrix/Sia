@@ -316,6 +316,18 @@ form "a.b.c.d:xxxx".
 
 Response: standard
 
+Host
+----
+
+Queries:
+
+* /host                         [GET]
+* /host                         [POST]
+* /host/announce                [POST]
+* /host/delete/{filecontractid} [POST]
+
+[Full Description][api/Host.md]
+
 Miner
 -----
 
@@ -1227,3 +1239,5 @@ encryptionpassword string
 frequently, the encryption password is the same as the primary wallet seed.
 
 Response: standard
+
+[api/Host.md]https://github.com/NebulousLabs/Sia/blob/master/doc/api/Host.md
